@@ -23,10 +23,25 @@ exports.pokemon = (req, res, next) => {
 exports.name = (req, res, next) => {
     try {
         console.log(`GET /pokemon/name called with name: ${JSON.stringify(req.query.name)}`)
+
+        //get the name from the query parameter
+        let name = req.query.name;
+
+        //find the pokemon by name
+        let pokemon = allPokemon.filter(poke => poke.name.english.toLowerCase() === name.toLowerCase());
+
+        //get the length of our pokemon array
+        let length = pokemon.length;
+
+        //if we have a pokemon, return it
+        if (length > 0) {
+            res.send(pokemon[0]);
+        } else {
+            res.send(null);
+        }
     
-        res.send(`test2`)
     } catch(err) {
         console.error(`Error in GET /pokemon/name, err: ${err}`)
-        res.send('Error in GET /pokemon/name')
+        res.send(null)
     }
 }
