@@ -30,4 +30,12 @@ router.route('/name').get(function (req, res, next) {
     pokemonController.name(req, res, next);
 })
 
+/**
+ * Will return pokemon by number based on the query parameter called number
+ * GET /pokemon/number?number=1
+ */
+router.route('/number').get(function (req, res, next) {
+    pokemonController.number(req, res, next);
+})
+
 module.exports = router;
