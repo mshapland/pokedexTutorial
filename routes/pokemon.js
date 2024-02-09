@@ -1,12 +1,13 @@
 const express = require('express');
 const router = express.Router();
+const {logger} = require('../utils/logging')
 
 //bring in our pokemon controller
 const pokemonController = require('../controllers/pokemon');
 
 //setup the route
 router.use(function (req, res, next) {
-    console.log(`pokemon route called`);
+    logger(`pokemon route called`, `routes/pokemon.js`, `router.use`)
     next();
 })
 

@@ -3,6 +3,7 @@ const bodyParser = require('body-parser');
 require('dotenv').config();
 const cors = require('cors');
 const app = express();
+const {logger} = require('./utils/logging')
 
 //set the port
 const PORT = process.env.PORT || 3000;
@@ -31,7 +32,7 @@ app.get('/', function (req, res) {
 })
 
 app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`)
+    logger(`Server is running on port ${PORT}`, `index.js`, `app.listen`)
 })
 
 //////////////////////////////////////

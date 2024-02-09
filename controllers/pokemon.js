@@ -1,4 +1,5 @@
 const pokedex = require('../data/pokedex')
+const {logger} = require('../utils/logging')
 
 //load all of our pokemon into memory
 const allPokemon = pokedex.pokedex;
@@ -12,7 +13,8 @@ const allPokemon = pokedex.pokedex;
  */
 exports.pokemon = (req, res, next) => {
     try {
-        console.log(`GET /pokemon called`)
+        //log it
+        logger(`GET /pokemon called`, `controllers/pokemon.js`, `pokemon`)
 
         //return our response
         res.send(allPokemon)
@@ -31,7 +33,8 @@ exports.pokemon = (req, res, next) => {
  */
 exports.name = (req, res, next) => {
     try {
-        console.log(`GET /pokemon/name called with name: ${JSON.stringify(req.query.name)}`)
+        //log it
+        logger(`GET /pokemon/name called with name: ${JSON.stringify(req.query.name, null, 2)}`, `controllers/pokemon.js`, `name`)
 
         //get the name from the query parameter
         let name = req.query.name;
@@ -64,7 +67,8 @@ exports.name = (req, res, next) => {
  */
 exports.number = (req, res, next) => {
     try {
-        console.log(`GET /pokemon/number called with number: ${JSON.stringify(req.query.number)}`)
+        //log it
+        logger(`GET /pokemon/number called`, `controllers/pokemon.js`, `number`);
 
         //parse our query string property "number" into an integer (number)
         let number = parseInt(req.query.number);
