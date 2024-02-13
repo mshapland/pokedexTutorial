@@ -1,8 +1,13 @@
 {
 	"folders": [
 		{
-			"path": "."
-		}
+			"path": ".",
+			"name": "Backend"
+		},
+		{
+			"path": "./my-app",
+			"name": "Frontend"
+		},
 	],
 	"settings": {}
 }
