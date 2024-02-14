@@ -3,13 +3,14 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import LandingPage from './components/LandingPage';
 import App from './App';
+import CountButton from './components/CountButton';
 import reportWebVitals from './reportWebVitals';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
     <LandingPage />
-    <App />
+    <CountButton test='abc' />
   </React.StrictMode>
 );
 
