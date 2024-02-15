@@ -2,17 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
 import LandingPage from './components/LandingPage';
-import App from './App';
-import CountButton from './components/CountButton';
 import reportWebVitals from './reportWebVitals';
 
-const root = ReactDOM.createRoot(document.getElementById('root'));
-root.render(
-  <React.StrictMode>
-    <LandingPage />
-    <CountButton test='abc' />
-  </React.StrictMode>
-);
+const rootNode = document.getElementById('root');
+ReactDOM.createRoot(rootNode).render(<LandingPage />);
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
