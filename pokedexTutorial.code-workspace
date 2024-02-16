@@ -1,13 +1,19 @@
 {
-	"folders": [
-		{
-			"path": ".",
-			"name": "Backend"
-		},
-		{
-			"path": "./my-app",
-			"name": "Frontend"
-		},
-	],
-	"settings": {}
+    "folders": [
+        {
+            "path": ".",
+            "name": "Backend"
+        },
+        {
+            "path": "./my-app",
+            "name": "Frontend"
+        }
+    ],
+    "settings": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode",
+        "editor.formatOnSave": true
+    },
+    "extensions": {
+        "recommendations": ["esbenp.prettier-vscode"]
+    }
 }
