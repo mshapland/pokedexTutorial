@@ -3,7 +3,7 @@ import { Table, Typography, Avatar, Modal } from "antd";
 import Spinner from "./Spinner";
 import { useState } from "react";
 
-const { Title } = Typography;
+const { Title, Text } = Typography;
 
 const columns = [
     {
@@ -40,6 +40,8 @@ const columns = [
 
 function PokemonTable(props) {
     const [isModalOpen, setIsModalOpen] = useState(false);
+    const [modalTitle, setModalTitle] = useState("");
+    const [modalContent, setModalContent] = useState("");
     const showModal = () => {
         setIsModalOpen(true);
     };
@@ -49,6 +51,38 @@ function PokemonTable(props) {
     const handleCancel = () => {
         setIsModalOpen(false);
     };
+
+    //function to get the data for our modal
+    function getModalData(record) {
+        //set the modal title
+        setModalTitle(record.name.english);
+
+        let theContent = (
+            <div>
+                <img
+                    src={`https://raw.githubusercontent.com/PokeAPI/sprites/master/sprites/pokemon/other/official-artwork/${record.id}.png`}
+                    alt={record.name.english}
+                    width={100}
+                    height={100}
+                />
+                <br />
+                <Text level={5}>Number: {record.id}</Text>
+                <br />
+                <Text level={5}>Type(s): {record.type.join(", ")}</Text>
+            </div>
+        );
+
+        //set the modal content
+        setModalContent(theContent);
+
+        //now show the modal
+        showModal();
+    }
+
+    ///////////////////////
+    //RETURN BLOCK
+    ///////////////////////
+
     //if we have pokemon data, return our table
     if (props.pokemon !== null) {
         return (
@@ -59,20 +93,18 @@ function PokemonTable(props) {
                     onRow={(record) => {
                         return {
                             onClick: () => {
-                                showModal();
+                                getModalData(record);
                             },
                         };
                     }}
                 />
                 <Modal
-                    title="Basic Modal"
+                    title={modalTitle}
                     open={isModalOpen}
                     onOk={handleOk}
                     onCancel={handleCancel}
                 >
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
-                    <p>Some contents...</p>
+                    <Text>{modalContent}</Text>
                 </Modal>
             </div>
         );
